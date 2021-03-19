@@ -78,7 +78,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"i@mail4.md\",\n    \"password\": \"123123\",\n    \"firstName\": \"vlad\",\n    \"lastName\": \"vlad\"   \n}",
+							"raw": "{\n    \"email\": \"i@mail4.md\",\n    \"password\": \"123123\",\n    \"firstName\": \"vlad\",\n    \"lastName\": \"vlad\",\n    \"roles\": \"student_TI\"   \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -214,16 +214,72 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/user/6040e91acfe68b44601c6e82",
+							"raw": "{{host}}/user/6053a05631e9b8433ce7d9d6",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"user",
-								"6040e91acfe68b44601c6e82"
+								"6053a05631e9b8433ce7d9d6"
 							]
 						},
 						"description": "Due to this request we can get user by userId"
+					},
+					"response": []
+				},
+				{
+					"name": "User Search",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"vlad vlad\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/user/search",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"search"
+							]
+						},
+						"description": "Due to this request we can get user by user name"
+					},
+					"response": []
+				},
+				{
+					"name": "User Get Roles List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/user/rolesList",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"rolesList"
+							]
+						},
+						"description": "Due to this request we can get user roles list."
 					},
 					"response": []
 				},
@@ -263,409 +319,6 @@
 						"description": "Due to this request we can update password in acount settings "
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "Proposal",
-			"item": [
-				{
-					"name": "Job Proposal",
-					"item": [
-						{
-							"name": "Job Proposal Create",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n        \"subject\": \"Hiring BackEnd developer\",\n        \"type\": \"IT\",\n        \"description\": \"to make server for JobForce\",\n        \"startPrice\": \"300\",\n        \"countryName\": \"Moldova\",\n        \"city\": \"Chisinau\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/job/proposal/create",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"job",
-										"proposal",
-										"create"
-									]
-								},
-								"description": "Due to this request we can create job proposal"
-							},
-							"response": []
-						},
-						{
-							"name": "Job Proposal Delete By Id",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "{{token}}"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/job/proposal/604e6ecb9cd1a9411c011e69",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"job",
-										"proposal",
-										"604e6ecb9cd1a9411c011e69"
-									]
-								},
-								"description": "Due to this request we can delete job proposal"
-							},
-							"response": []
-						},
-						{
-							"name": "Job Proposal Get All List",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "{{token}}"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/job/proposal/getAll",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"job",
-										"proposal",
-										"getAll"
-									]
-								},
-								"description": "Due to this request we can get job proposals list"
-							},
-							"response": []
-						},
-						{
-							"name": "Job Proposal Get By Id",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "{{token}}"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/job/proposal/604e1638e617414d40876696",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"job",
-										"proposal",
-										"604e1638e617414d40876696"
-									]
-								},
-								"description": "Due to this request we can get job proposal by it's id"
-							},
-							"response": []
-						},
-						{
-							"name": "Job Proposal Update By Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PATCH",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n        \"subject\": \"Hiring BackEnd developer\",\n        \"type\": \"IT\",\n        \"description\": \"to make server for JobForce\",\n        \"startPrice\": \"500\",\n        \"countryName\": \"USA\",\n        \"city\": \"New York\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/job/proposal/update/604e4a407162af3cacfa7b83",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"job",
-										"proposal",
-										"update",
-										"604e4a407162af3cacfa7b83"
-									]
-								},
-								"description": "Due to this request we can update job proposal by it's Id"
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Performer Proposal",
-					"item": [
-						{
-							"name": "Performer Proposal Create",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n        \"description\": \"I will make it in 3 day\",\n        \"price\": \"400\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/performer/proposal/create/604e6ecb9cd1a9411c011e69",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"performer",
-										"proposal",
-										"create",
-										"604e6ecb9cd1a9411c011e69"
-									]
-								},
-								"description": "Due to this request we can create performer proposal"
-							},
-							"response": []
-						},
-						{
-							"name": "Performer Proposal Delete By Id",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "{{token}}"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/performer/proposal/604e18da67e3761d809bb0bd/job/proposal/604e1638e617414d40876696",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"performer",
-										"proposal",
-										"604e18da67e3761d809bb0bd",
-										"job",
-										"proposal",
-										"604e1638e617414d40876696"
-									]
-								},
-								"description": "Due to this request we can delete performer proposal"
-							},
-							"response": []
-						},
-						{
-							"name": "Performer Proposal Get All List",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "{{token}}"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/performer/proposal/getAll",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"performer",
-										"proposal",
-										"getAll"
-									]
-								},
-								"description": "Due to this request we can get performer proposals list"
-							},
-							"response": []
-						},
-						{
-							"name": "Performer Proposal Get By Id",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "{{token}}"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/performer/proposal/604e1643e617414d40876698",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"performer",
-										"proposal",
-										"604e1643e617414d40876698"
-									]
-								},
-								"description": "Due to this request we can get performer proposal by it's id"
-							},
-							"response": []
-						},
-						{
-							"name": "Performer Proposal Update By Id",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PATCH",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Authorization",
-										"value": "{{token}}",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n        \"description\": \"I will make it in 5 days\",\n        \"price\": \"600\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/performer/proposal/update/604e4a3c7162af3cacfa7b7a",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"performer",
-										"proposal",
-										"update",
-										"604e4a3c7162af3cacfa7b7a"
-									]
-								},
-								"description": "Due to this request we can update performer proposal by it's Id"
-							},
-							"response": []
-						}
-					]
 				}
 			]
 		}
