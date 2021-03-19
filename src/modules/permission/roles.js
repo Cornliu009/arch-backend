@@ -23,6 +23,7 @@ const roles = {
     // USER
     'user.auth',
     'user.get.all',
+    'user.get.teacher'
   ],
 
   student_TI : [

@@ -10,12 +10,16 @@ import userGetAll from './controllers/userControllerGetAll.js';
 import userGetByEmail from './controllers/userControllerGetByEmail.js';
 import userGetById from './controllers/userControllerGetById.js';
 import userSettingsUpdatePassword from './controllers/userControllerSettingsUpdatePassword.js';
+import userGetRolesList from './controllers/userControllerGetRolesList.js';
+//import userSearch from './controllers/userControllerSearch.js';
 
 const router = Router();
 
 router.post('/', serviceHeader('userRegister'), userRegister);
 
 router.post('/login', serviceHeader('userLogin'), userLogin);
+
+router.get('/rolesList', serviceHeader('userGetRolesList'), userGetRolesList);
 
 router.delete(
   '/:userId',
@@ -37,7 +41,7 @@ router.get(
   '/',
   serviceHeader('userGetAll'),
   userCheckAuth,
-  userCheckPerm('user.get.admin'),
+  userCheckPerm('user.get.teacher'),
   userGetAll,
 );
 
@@ -45,7 +49,7 @@ router.get(
   '/email/:email',
   serviceHeader('userGetByEmail'),
   userCheckAuth,
-  userCheckPerm('user.get.admin'),
+  userCheckPerm('user.auth'),
   userGetByEmail,
 );
 
@@ -56,6 +60,14 @@ router.get(
   userCheckPerm('user.auth'),
   userGetById,
 );
+
+// router.post(
+//   '/search',
+//   serviceHeader('userSearch'),
+//   userCheckAuth,
+//   userCheckPerm('user.auth'),
+//   userSearch,
+// );
 
 router.patch(
   '/settings/password',

@@ -12,27 +12,12 @@ const userGetByEmail = (req, res) => {
         email,
       },
     },
-    // {
-    //   $lookup: {
-    //     from: 'users',
-    //     localField: 'users',
-    //     foreignField: '_id',
-    //     as: 'users',
-    //   },
-    // },
 
     {
       $project: {
         name: { $ifNull: ['$name', '$email'] },
         email: '$email',
-        about: '$about',
-        sex: '$sex',
-        city: '$city',
-        countryName: '$countryName',
-        links: '$links',
-        phone: { $ifNull: ['$phone', ''] },
         roles: { $ifNull: ['$roles', []] },
-        rating: '$rating',
         createdAt: {
           $ifNull: [
             '$createdAt',
@@ -43,7 +28,6 @@ const userGetByEmail = (req, res) => {
             },
           ],
         },
-        emailConfirmed: '$emailConfirmation.confirmed',
       },
     },
 
