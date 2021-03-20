@@ -16,6 +16,7 @@ const roles = {
     'user.update.admin',
     'user.search.admin',
     'user.get.all',
+    'user.get.teacher'
 
   ],
 
