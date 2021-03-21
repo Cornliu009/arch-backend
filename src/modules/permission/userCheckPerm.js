@@ -27,7 +27,6 @@ const userCheckPerm = (checkedPermission) => (req, res, next) => {
         if (userCan(roles, checkedPermission)) {
           req.userData.roles = roles;
           req.userData.name = get(doc, 'name');
-          req.userData.emailConfirmation = get(doc, 'emailConfirmation');
           next();
         } else {
           const reason = 'Permission denied';
@@ -66,19 +65,19 @@ const userCheckPerm = (checkedPermission) => (req, res, next) => {
 
 export default userCheckPerm;
 
-export const userCanByPerm = async (userId, checkedPermission) => {
-  return await User.findById(userId)
-    .select('roles')
-    .exec()
-    .then((doc) => {
-      const roles = get(doc, 'roles', []);
-      return userCan(roles, checkedPermission);
-    })
-    .catch((err) => {
-      analytics('USER_CHECK_PERMISSION_ERROR', {
-        reason: err,
-        checkedPermission,
-        user: userId,
-      });
-    });
-};
+// export const userCanByPerm = async (userId, checkedPermission) => {
+//   return await User.findById(userId)
+//     .select('roles')
+//     .exec()
+//     .then((doc) => {
+//       const roles = get(doc, 'roles', []);
+//       return userCan(roles, checkedPermission);
+//     })
+//     .catch((err) => {
+//       analytics('USER_CHECK_PERMISSION_ERROR', {
+//         reason: err,
+//         checkedPermission,
+//         user: userId,
+//       });
+//     });
+// };
