@@ -11,7 +11,9 @@ import userGetByEmail from './controllers/userControllerGetByEmail.js';
 import userGetById from './controllers/userControllerGetById.js';
 import userSettingsUpdatePassword from './controllers/userControllerSettingsUpdatePassword.js';
 import userGetRolesList from './controllers/userControllerGetRolesList.js';
-//import userSearch from './controllers/userControllerSearch.js';
+import userSearchByEmail from './controllers/userControllerSearchByEmail.js';
+import userSearchByName from './controllers/userControllerSearchByName.js';
+import userSearchByRole from './controllers/userControllerSearchByRole.js';
 
 const router = Router();
 
@@ -49,7 +51,7 @@ router.get(
   '/email/:email',
   serviceHeader('userGetByEmail'),
   userCheckAuth,
-  userCheckPerm('user.auth'),
+  userCheckPerm('user.get.admin'),
   userGetByEmail,
 );
 
@@ -61,13 +63,29 @@ router.get(
   userGetById,
 );
 
-// router.post(
-//   '/search',
-//   serviceHeader('userSearch'),
-//   userCheckAuth,
-//   userCheckPerm('user.auth'),
-//   userSearch,
-// );
+router.post(
+  '/search/email',
+  serviceHeader('userSearchByEmail'),
+  userCheckAuth,
+  userCheckPerm('user.get.all'),
+  userSearchByEmail,
+);
+
+router.post(
+  '/search/name',
+  serviceHeader('userSearchByName'),
+  userCheckAuth,
+  userCheckPerm('user.get.all'),
+  userSearchByName,
+);
+
+router.post(
+  '/search/role',
+  serviceHeader('userSearchByRole'),
+  userCheckAuth,
+  userCheckPerm('user.get.all'),
+  userSearchByRole,
+);
 
 router.patch(
   '/settings/password',
