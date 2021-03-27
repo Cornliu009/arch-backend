@@ -5,7 +5,7 @@ import userCheckPerm from '../permission/userCheckPerm.js';
 import userRegister from './controllers/userControllerRegister.js';
 import userLogin from './controllers/userControllerLogin.js';
 import userDeleteById from './controllers/userControllerDeleteById.js';
-import userDeleteByEmail from './controllers/userControllerDeleteByMail.js';
+import userDeleteByEmail from './controllers/userControllerDeleteByEmail.js';
 import userGetAll from './controllers/userControllerGetAll.js';
 import userGetByEmail from './controllers/userControllerGetByEmail.js';
 import userGetById from './controllers/userControllerGetById.js';
