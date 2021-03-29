@@ -9,6 +9,9 @@ import routes from './modules/core/routes.js';
 import errorHandling from './modules/core/errorHandling.js';
 import chai_datetime from 'chai-datetime';
 
+import dotenv from 'dotenv';
+dotenv.config({ path: './.env' });
+
 chai.use(chai_datetime);
 
 const app = express();

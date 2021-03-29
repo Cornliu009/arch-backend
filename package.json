@@ -16,7 +16,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js",
+    "start": "npm run build && node build",
     "local": "NODE_ENV=local nodemon --inspect -r dotenv/config -r @babel/register src/index",
     "prod": "NODE_ENV=prod nodemon --inspect -r dotenv/config -r @babel/register src/index"
   },
@@ -30,7 +30,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongodb": "^3.6.4",
-    "mongoose": "^5.11.18",
+    "mongoose": "^5.12.2",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
