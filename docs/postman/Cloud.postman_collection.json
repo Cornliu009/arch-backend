@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "7d9f5c0b-de38-4d3a-8733-a42ff8f42699",
+		"name": "Cloud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User Delete by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/user/6036a9e8e6f33b32309947fd",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"6036a9e8e6f33b32309947fd"
+							]
+						},
+						"description": "Due to this request we can delete user by id"
+					},
+					"response": []
+				},
+				{
+					"name": "User Delete by Mail",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/user/email/i@mail5.md",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"email",
+								"i@mail5.md"
+							]
+						},
+						"description": "Due to this request we can delete user by email"
+					},
+					"response": []
+				},
+				{
+					"name": "User Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/user",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Due to this request we can get all users"
+					},
+					"response": []
+				},
+				{
+					"name": "User Get By Email",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/user/email/i@mail4.md",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"email",
+								"i@mail4.md"
+							]
+						},
+						"description": "Due to this request we can get user by Email"
+					},
+					"response": []
+				},
+				{
+					"name": "User Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/user/6053a05631e9b8433ce7d9d6",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"6053a05631e9b8433ce7d9d6"
+							]
+						},
+						"description": "Due to this request we can get user by userId"
+					},
+					"response": []
+				},
+				{
+					"name": "User Get Roles List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/user/rolesList",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"rolesList"
+							]
+						},
+						"description": "Due to this request we can get user roles list."
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"pm.environment.set(\"token\", data.token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/user/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						},
+						"description": "Due to this request we can login user ."
+					},
+					"response": []
+				},
+				{
+					"name": "User Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.environment.set(\"email\", \"i@mail4.md\");\r",
+									"pm.environment.set(\"password\", \"123123\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"i@mail4.md\",\n    \"password\": \"123123\",\n    \"firstName\": \"vladislav\",\n    \"lastName\": \"vlad\",\n    \"roles\": \"student_TI\"   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/user",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Due to this request we can register user."
+					},
+					"response": []
+				},
+				{
+					"name": "User Search By Email",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"vladislav.kovalskii@isa.utm.md\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/user/search/email",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"search",
+								"email"
+							]
+						},
+						"description": "Due to this request we can search users by email"
+					},
+					"response": []
+				},
+				{
+					"name": "User Search By Name",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"vlad\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/user/search/name",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"search",
+								"name"
+							]
+						},
+						"description": "Due to this request we can search users by name"
+					},
+					"response": []
+				},
+				{
+					"name": "User Search By Role",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"student_TI\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/user/search/role",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"search",
+								"role"
+							]
+						},
+						"description": "Due to this request we can search users by role"
+					},
+					"response": []
+				},
+				{
+					"name": "User Settings Update Password",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"oldPassword\": \"123123\",\r\n    \"newPassword\": \"124124\",\r\n    \"confirmPassword\": \"124124\"  \r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/user/settings/password",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"settings",
+								"password"
+							]
+						},
+						"description": "Due to this request we can update password in acount settings "
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
